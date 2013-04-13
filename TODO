@@ -1,0 +1,9 @@
+* user login
+* subscription management.
+* roles: admin, member of a group from active directory.
+* admin can manipulate all channel and posts. (CRUD)
+* admin can authorize a channel to a group or a user.
+* user can only see the channels which is authorized and create posts.
+* send push notification to mobile devices when create a post. (The device must subscribe the channel)
+* (optional) send email notification when create a post 
+
