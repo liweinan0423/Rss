@@ -1,6 +1,7 @@
 Rss::Application.routes.draw do
   resources :channels do
     resources :posts
+    resources :subscriptions
   end
   
   root :to => 'channels#index'
