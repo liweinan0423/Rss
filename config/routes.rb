@@ -1,5 +1,7 @@
 Rss::Application.routes.draw do
-  resources :channels
+  resources :channels do
+    resources :posts
+  end
 
 
   # The priority is based upon order of creation:
