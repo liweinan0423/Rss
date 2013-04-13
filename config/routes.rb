@@ -5,6 +5,12 @@ Rss::Application.routes.draw do
   
   root :to => 'channels#index'
 
+  get  '/login'  => 'security#login', :as => :login_view
+
+  post '/login'  => 'security#process_login', :as => :login 
+
+  get  '/logout' => 'security#logout', :as => :logout 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
