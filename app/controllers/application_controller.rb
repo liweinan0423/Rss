@@ -5,15 +5,15 @@ class ApplicationController < ActionController::Base
 
   private
     def current_username
-        session[:username]
+      session[:username]
     end
 
     def logged_in?
-        !!current_username
+      !!current_username
     end
 
     def require_login
-      
+      @current_username = current_username
       redirect_to login_view_path unless logged_in?
       
     end

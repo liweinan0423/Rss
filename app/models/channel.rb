@@ -5,10 +5,18 @@ class Channel < ActiveRecord::Base
   validates :name, :presence => true
 
   def subscribe(username)
-    unless Subscription.find_by_username username
+    unless subscribed? username
       return subscriptions.build :username => username
     else
       return false
     end
+  end
+
+  def subscribed?(username)
+    !!find_subscription(username)
+  end
+
+  def find_subscription(username)
+  	return Subscription.find_by_username username
   end
 end

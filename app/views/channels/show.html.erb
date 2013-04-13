@@ -20,5 +20,12 @@
   </li>
 <% end %>
 </ul>
+
+<h2>Subscriptions</h2>
+<ul>
+	<% for subscription in @channel.subscriptions %>
+	<li><%= subscription.username %></li>
+	<% end %>
+</ul>
 <%= link_to 'Edit', edit_channel_path(@channel) %> |
 <%= link_to 'Back', channels_path %>

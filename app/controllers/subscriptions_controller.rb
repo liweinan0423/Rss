@@ -17,4 +17,14 @@ class SubscriptionsController < ApplicationController
   	end
   end
 
+  def destroy
+    respond_to do |format|
+      if Subscription.delete params[:id]
+      	format.html { redirect_to channels_path, :notice => 'Subscription cancelled' }
+      else
+      	format.html { redirect_to channels_path, :notice => 'Cannot cancel subscription' }
+      end
+    end
+  end
+
 end

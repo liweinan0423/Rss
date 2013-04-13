@@ -22,7 +22,17 @@
     <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
     <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Will remove the channel and all posts in it, are you sure?' } %></td>
     <td><%= link_to 'New Post', new_channel_post_path(channel) %></td>
-    <td><%= link_to 'Subscribe', channel_subscriptions_path(channel), :method => :post %></td>
+    <% if channel.subscribed? @current_username %>
+      <td>
+        <%= link_to 'Cancel Subscription', 
+                    channel_subscription_path(channel, channel.find_subscription(@current_username)), 
+                    :method => :delete %>
+      </td>
+    <% else %>
+      <td>
+        <%= link_to 'Subscribe', channel_subscriptions_path(channel), :method => :post%>
+      </td>
+    <% end %>
   </tr>
 <% end %>
 </table>
