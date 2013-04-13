@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413060855) do
+ActiveRecord::Schema.define(:version => 20130413114134) do
 
   create_table "channels", :force => true do |t|
     t.string   "name"
@@ -29,5 +29,14 @@ ActiveRecord::Schema.define(:version => 20130413060855) do
   end
 
   add_index "posts", ["channel_id"], :name => "index_posts_on_channel_id"
+
+  create_table "subscriptions", :force => true do |t|
+    t.string   "username"
+    t.integer  "channel_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "subscriptions", ["channel_id"], :name => "index_subscriptions_on_channel_id"
 
 end
