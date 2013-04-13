@@ -1,4 +1,7 @@
 Rss::Application.routes.draw do
+  resources :channels
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
