@@ -8,8 +8,8 @@
 </head>
 <body>
 <div>
-	<% if controller.class != SecurityController %>
-	<%= link_to 'Logout', logout_path%>
+	<% if controller.class != LoginController %>
+	<%= link_to 'Logout', login_path, :method => :delete %>
 	<% end %>
 </div>
 

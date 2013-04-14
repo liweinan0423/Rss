@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
     def require_login
       @current_username = current_username
-      redirect_to login_view_path unless logged_in?
+      redirect_to login_url unless logged_in?
       
     end
 end
