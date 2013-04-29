@@ -1,3 +1,42 @@
 // Place all the styles related to the Channels controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.new_channel_link {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+#channel_list {
+  .channel_entry {
+  	margin-top: 10px;
+    border-bottom: 1px dotted;
+    &:hover {
+      background: cyan;
+      .channel_operations {
+        display: block !important;
+      }
+    }
+
+    
+    .channel_name {
+      display: block;
+
+      h3 {
+      	float: left;
+      }
+
+      .channel_operations {
+      	display: none;
+      	float: right;
+      }
+    }
+
+    .channel_description {
+      padding-left: 10px;
+      span {
+      	font-style: italic;
+      }
+    }
+  }	
+}

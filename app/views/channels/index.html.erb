@@ -1,43 +1,42 @@
-<h1>Listing channels</h1>
-
-
-<div class="notice">
+<% if notice %>
+<div id="notice">
+  <div class="clear_notice_icon">x</div>
   <%= notice %>
 </div>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @channels.each do |channel| %>
-  <tr>
-    <td><%= channel.name %></td>
-    <td><%= channel.description %></td>
-    <td><%= link_to 'Show', channel %></td>
-    <td><%= link_to 'Edit', edit_channel_path(channel) %></td>
-    <td><%= link_to 'Destroy', channel, method: :delete, data: { confirm: 'Will remove the channel and all posts in it, are you sure?' } %></td>
-    <td><%= link_to 'New Post', new_channel_post_path(channel) %></td>
-    <% if channel.subscribed? @current_username %>
-      <td>
-        <%= link_to 'Cancel Subscription', 
-                    channel_subscription_path(channel, channel.find_subscription(@current_username)), 
-                    :method => :delete %>
-      </td>
-    <% else %>
-      <td>
-        <%= link_to 'Subscribe', channel_subscriptions_path(channel), :method => :post%>
-      </td>
-    <% end %>
-    <td><%= link_to 'RSS', channel_url(channel, :rss) %></td>
-  </tr>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Channel', new_channel_path %>
+<div class="new_channel_link">
+  <%= link_to 'New Channel', new_channel_path %>
+</div>
+<div id="channel_list">
+  <% @channels.each do |channel| %>
+  <div class="channel_entry">
+    <div class="channel_name">
+      <h3>
+        <%= channel.name %>
+        <%= link_to channel_path(channel, :rss) do %>
+          <%= image_tag 'rss.gif', :title => 'RSS Feed' %>
+        <% end %>
+      </h3>
+      <div class="channel_operations">
+        <%= link_to 'View', channel %>
+        <%= link_to 'Edit', edit_channel_path(channel) %>
+        <%= link_to 'Delete', channel, :method => :delete, :confirm => 'Will remove the channel and all articles in it, are you sure?' %>
+        <%= link_to 'Add Article', new_channel_post_path(channel) %>
+        <% if channel.subscribed? @current_username %>
+          <%= link_to 'Cancel Subscription', 
+                      channel_subscription_path(channel, channel.find_subscription(@current_username)), 
+                      :method => :delete 
+          %>
+        <% else %>
+          <%= link_to 'Subscribe', channel_subscriptions_path(channel), :method => :post %>
+        <% end %>
+      </div>
+    </div>
+    <div class="clear_float"></div>
+    <div class="channel_description">
+      <span><%= channel.description %></span>
+    </div>
+  </div>
+  <% end %>
+</div>
