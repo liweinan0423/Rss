@@ -4,7 +4,8 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.references :channel
-
+      t.binary :image
+      t.string :author
       t.timestamps
     end
     add_index :posts, :channel_id

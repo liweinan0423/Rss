@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   def create
     @channel = Channel.find params[:channel_id]
     @post = @channel.posts.create params[:post]
-
+    @post.author = 'current_username'
     respond_to do |format|
       if @post.save
         format.html { redirect_to channel_post_path(@channel, @post), notice: 'Post was successfully created.' }
@@ -22,6 +22,13 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find params[:id] 
+  end
+
+  def show_image
+    @post = Post.find params[:post_id]
+    send_data @post.image,
+              :disposition => :inline,
+              :type => 'image'
   end
 
   def edit

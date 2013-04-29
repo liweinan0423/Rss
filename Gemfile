@@ -1,12 +1,11 @@
 # source 'https://rubygems.org'
 source 'http://ruby.taobao.org'
-source 'http://gemcutter.org'
 
 gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
-
+gem 'mysql'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

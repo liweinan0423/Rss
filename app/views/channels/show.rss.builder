@@ -12,6 +12,10 @@ xml.rss :version => "2.0" do
         xml.pubDate article.created_at.to_s(:rfc822)
         xml.link channel_post_url(@channel, article)
         xml.guid channel_post_url(@channel, article)
+
+        #some extended properties
+        xml.image channel_post_image_url(@channel, article)
+        xml.author article.author
       end
     end
   end

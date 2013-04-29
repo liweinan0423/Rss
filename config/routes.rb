@@ -5,7 +5,9 @@ Rss::Application.routes.draw do
   resource :login, :controller => :login
 
   resources :channels do
-    resources :posts
+    resources :posts do
+      match 'image' => 'posts#show_image'
+    end
     resources :subscriptions
   end
 
