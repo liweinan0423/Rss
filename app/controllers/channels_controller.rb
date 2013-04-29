@@ -6,7 +6,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @channels }
+      format.json { render json: @channels, content_type: 'text/json' }
     end
   end
 
@@ -17,7 +17,7 @@ class ChannelsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @channel }
+      format.rss
     end
   end
 
@@ -40,6 +40,7 @@ class ChannelsController < ApplicationController
   # POST /channels
   # POST /channels.json
   def create
+    puts "****************#{params}"
     @channel = Channel.new(params[:channel])
 
     respond_to do |format|

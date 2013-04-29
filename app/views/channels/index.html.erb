@@ -33,6 +33,7 @@
         <%= link_to 'Subscribe', channel_subscriptions_path(channel), :method => :post%>
       </td>
     <% end %>
+    <td><%= link_to 'RSS', channel_url(channel, :rss) %></td>
   </tr>
 <% end %>
 </table>
