@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20130413114134) do
     t.string   "title"
     t.text     "content"
     t.integer  "channel_id"
+    t.binary   "image"
+    t.string   "author"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

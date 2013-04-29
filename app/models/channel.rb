@@ -19,4 +19,5 @@ class Channel < ActiveRecord::Base
   def find_subscription(username)
   	return Subscription.find_by_username username
   end
+
 end

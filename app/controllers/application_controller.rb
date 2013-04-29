@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
+  # protect_from_forgery
   
-  before_filter :require_login
+  # before_filter :require_login
   
   include Rss::UserRepository
 
