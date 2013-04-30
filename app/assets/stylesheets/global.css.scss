@@ -18,3 +18,12 @@
 		cursor: pointer;
   }
 }
+
+.actions {
+	input[type=submit] {
+		border: 1px solid #ce7201;
+		background-position: 0 -60px;
+		background-color: #fcd791;
+		font-weight: 700;
+	}
+}

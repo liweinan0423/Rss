@@ -1,31 +1,37 @@
-<% if notice %><p id="notice"><%= notice %></p> <% end %>
-
-<p>
-  <b>Name:</b>
-  <%= @channel.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @channel.description %>
-</p>
-
-<h2>Posts</h2>
-<ul>
-<% for post in @channel.posts %>
-  <li>
-  	<%= post.title %>
-  	<%= link_to 'View', channel_post_path(post.channel, post) %> | 
-  	<%= link_to 'Edit', edit_channel_post_path(post.channel, post) %>
-  </li>
-<% end %>
-</ul>
-
-<h2>Subscriptions</h2>
-<ul>
-	<% for subscription in @channel.subscriptions %>
-	<li><%= subscription.username %></li>
-	<% end %>
-</ul>
-<%= link_to 'Edit', edit_channel_path(@channel) %> |
 <%= link_to 'Back', channels_path %>
+<% @channel.posts.each do |post| %>
+<div class="article">
+  <div class="article_title">
+    <div class="article_title_text">
+      <%= link_to post.title, channel_post_path(post) %>
+    </div>
+    <div class="article_pubDate"><%= post.created_at.to_s(:db) %></div>
+    <div class="clear_float"></div>
+  </div>
+  <div class="article_content">
+    <%= post.content %>
+  </div>
+  <% if post.image %>
+  <div class="article_image">
+    <%= image_tag channel_post_image_path(@channel, post)%>
+  </div>
+  <div class="clear_float" />
+  <% end %>
+  <div class="article_operations">
+    <ul>
+      <li>
+        <%= link_to 'Edit', edit_channel_post_path(@channel, post) %>
+      </li>
+      <li>
+        <%= link_to 'View', channel_post_path(@channel, post) %>
+      </li>
+      <li class="last">
+        <%= link_to 'Delete', 
+                    channel_post_path(@channel, post), 
+                    :method => :delete, 
+                    :confirm =>'are you sure?' %>
+      </li>
+    </ul>
+  </div>
+</div>
+<% end %>

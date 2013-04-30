@@ -5,7 +5,7 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
-gem 'mysql'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -15,8 +15,8 @@ end
 
 gem 'jquery-rails'
 
-gem 'jbuilder'
 
-# gem 'handsoap'
+
+gem 'httpclient'
 # gem 'curb' 
 # gem 'nokogiri'

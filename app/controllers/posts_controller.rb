@@ -7,7 +7,9 @@ class PostsController < ApplicationController
 
   def create
     @channel = Channel.find params[:channel_id]
-    @post = @channel.posts.create params[:post]
+    @post = @channel.posts.build params[:post] do |p|
+      p.image = params[:image].read if params[:image]
+    end
     @post.author = 'current_username'
     respond_to do |format|
       if @post.save
@@ -26,9 +28,7 @@ class PostsController < ApplicationController
 
   def show_image
     @post = Post.find params[:post_id]
-    send_data @post.image,
-              :disposition => :inline,
-              :type => 'image'
+    send_data @post.image, :type => 'image/jpeg', :disposition => :inline
   end
 
   def edit
@@ -47,6 +47,12 @@ class PostsController < ApplicationController
         format.json { render :json => @post.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def destroy
+    Post.delete params[:id]
+
+    redirect_to channel_path(params[:channel_id])
   end
 
 end

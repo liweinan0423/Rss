@@ -13,9 +13,6 @@
     border-bottom: 1px dotted;
     &:hover {
       background: cyan;
-      .channel_operations {
-        display: block !important;
-      }
     }
 
     
@@ -27,7 +24,6 @@
       }
 
       .channel_operations {
-      	display: none;
       	float: right;
       }
     }
@@ -39,4 +35,56 @@
       }
     }
   }	
+}
+
+.article {
+  border-bottom: 1px dotted;
+  margin-top: 20px;
+
+  .article_title {
+    background-color: cyan;
+    padding: 5px 0px 5px 0px;
+    
+
+    .article_title_text {
+      float: left;
+      font-weight: bold;
+      font-size: 13px;
+      padding-left: 5px;
+    }
+
+    .article_pubDate {
+      float: right;
+      padding-right: 5px;
+    }
+  }
+
+  .article_image {
+    border: 1px solid gray;
+    padding: 2px;
+    float: left;
+    margin-top: 10px;
+  }
+
+  .article_content {
+    padding-top: 20px;
+    padding-left: 5px;
+  }
+
+  .article_operations {
+    margin-bottom: 10px;
+    ul {
+      margin: 0px;
+      padding: 0px;
+      li {
+       display: inline;
+       border-right: 1px solid gray;
+       margin-left: 10px;
+       padding-right: 7px;
+       &.last {
+         border: none;
+       }
+      }
+    }
+  }
 }
