@@ -5,7 +5,7 @@ xml.rss :version => "2.0" do
     xml.description @channel.description
     xml.link channel_url(@channel, :rss)
     
-    for article in @channel.posts
+    for article in @channel.posts.order('created_at desc')
       xml.item do
         xml.title article.title
         xml.description article.content

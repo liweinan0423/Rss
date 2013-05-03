@@ -25,7 +25,7 @@ class Post < ActiveRecord::Base
   private 
     def send_broadcast
       begin
-        push_client = ::RSS::PushClient.new "http://10.32.152.132:8080/Androidpn/ws/nfws"
+        push_client = ::RSS::PushClient.new "http://10.32.152.234:8080/Androidpn/ws/nfws"
 
         push_client.send_broadcast '', title, content, ''
       rescue Exception

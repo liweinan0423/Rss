@@ -28,7 +28,7 @@ class PostsController < ApplicationController
 
   def show_image
     @post = Post.find params[:post_id]
-    send_data @post.image, :type => 'image/jpeg', :disposition => :inline
+    send_data @post.image, :type => 'image/jpeg', :disposition => :inline, :content_length => @post.image.length
   end
 
   def edit

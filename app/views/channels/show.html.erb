@@ -1,5 +1,5 @@
 <%= link_to 'Back', channels_path %>
-<% @channel.posts.each do |post| %>
+<% @channel.posts.order.order('created_at desc').each do |post| %>
 <div class="article">
   <div class="article_title">
     <div class="article_title_text">
@@ -15,7 +15,7 @@
   <div class="article_image">
     <%= image_tag channel_post_image_path(@channel, post)%>
   </div>
-  <div class="clear_float" />
+  <div class="clear_float"></div>
   <% end %>
   <div class="article_operations">
     <ul>
