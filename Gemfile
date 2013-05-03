@@ -5,18 +5,22 @@ gem 'rails', '3.2.13'
 
 gem 'sqlite3'
 
-gem 'mysql'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
+  gem 'closure-compiler'
 end
 
 gem 'jquery-rails'
 
-gem 'jbuilder'
+gem 'cloudfoundry-jquery-rails'
 
-# gem 'handsoap'
+
+gem 'httpclient'
+
+
 # gem 'curb' 
 # gem 'nokogiri'

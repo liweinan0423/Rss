@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   attr_accessible :content, :title, :image, :author
 
   validates :title, :content, :presence => true
+  
+  after_save :send_broadcast
 
   def author=(author)
     if author == '' or author == nil
@@ -19,4 +21,15 @@ class Post < ActiveRecord::Base
       @author
     end
   end
+
+  private 
+    def send_broadcast
+      begin
+        push_client = ::RSS::PushClient.new "http://10.32.152.234:8080/Androidpn/ws/nfws"
+
+        push_client.send_broadcast '', title, content, ''
+      rescue Exception
+        logger.warn "Cannot connect to the push server...."
+      end
+    end
 end

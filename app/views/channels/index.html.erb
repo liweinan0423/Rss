@@ -13,7 +13,7 @@
   <div class="channel_entry">
     <div class="channel_name">
       <h3>
-        <%= channel.name %>
+        <%= "#{channel.name}" %>
         <%= link_to channel_path(channel, :rss) do %>
           <%= image_tag 'rss.gif', :title => 'RSS Feed' %>
         <% end %>

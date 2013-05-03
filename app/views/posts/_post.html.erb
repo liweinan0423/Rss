@@ -7,3 +7,9 @@
   <b>Content:</b>
   <%= post.title %>
 </p>
+
+<% if post.image %>
+<p>
+  <%= image_tag channel_post_image_path(post.channel, post) %>
+</p>
+<% end %>
